@@ -22,26 +22,26 @@
 #define TOK_DELIM " \t\r\n\a\""
 
 /*signal handlers*/
-void _child_handler(void);
-void _int_handler(void);
+void sig_child(int t);
+void sig_int(int t);
 int newProc(char **tp);
 
 /*Shell pid | pgid | terminal modes*/
-static pid_t __attribute__ ((unused)) PID_SH;
-static pid_t __attribute__ ((unused)) PGID_SH;
-static int __attribute__ ((unused)) INTERACTIVE_SH;
-static struct termios __attribute__ ((unused)) MOD_SH;
-static char __attribute__ ((unused)) *current_dir;
-extern char __attribute__ ((unused)) **environ;
-struct sigaction act_child;
-struct sigaction act_int;
-int no_prompt;
+static pid_t shellPGID;
+static pid_t shellPID;
+static int SH_INTERACTIVE;
+static struct termios MOD_SH;
+static char *currentDir;
+extern char **environ;
+struct sigaction childAction;
+struct sigaction intAction;
+int noPrompt;
 pid_t pid;
 
 void shPpt(void);
 int dirSwitch(char *args[]);
 int envmgt(char *args[], int alt);
-void handler(char *args[]);
+void tunnels(char *args[]);
 char *lsh_readln(void);
 void uninteractive(void);
 char *readstr(void);

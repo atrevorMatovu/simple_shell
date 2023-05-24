@@ -31,7 +31,7 @@ void sig_int(int t)
 	if (kill(pid, SIGTERM) == 0)
 	{
 		printf("\n SIGINT signal sent to process %d\n", pid);
-		no_reprint_prmpt = 1;
+		noPrompt = 1;
 	}
 	else
 	{
