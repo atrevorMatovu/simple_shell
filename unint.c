@@ -7,7 +7,7 @@
  */
 void begin(void)
 {
-	pid_t shellPID = getpid();
+	shellPID = getpid();
 
 	SH_INTERACTIVE = isatty(STDIN_FILENO);
 
