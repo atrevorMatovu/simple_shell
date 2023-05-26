@@ -16,12 +16,9 @@ void begin(void)
 		do {
 			kill(shellPID, SIGTTIN);
 		} while (tcgetpgrp(STDIN_FILENO) != (shellPGID = getpgrp()));
-
-		struct sigaction childAction;
-		struct sigaction intAction;
-
-		childAction.sa_handler = childSignalHandler;
-		intAction.sa_handler = intSignalHandler;
+		
+		childAction.sa_handler = sig_child;
+		intAction.sa_handler = sig_int;
 
 		sigaction(SIGCHLD, &childAction, 0);
 		sigaction(SIGINT, &intAction, 0);
