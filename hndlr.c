@@ -150,7 +150,7 @@ void tunnels(char *args[])
 			{
 				close(fds[1]);
 			}
-			else if (i == (Cmd - 1))
+			else if (j == (Cmd - 1))
 			{
 				if ((Cmd % 2) != 0)
 				{
@@ -175,7 +175,7 @@ void tunnels(char *args[])
 				}
 			}
 			waitpid(pid, NULL, 0);
-			j++
+			j++;
 		}
 	}
 }

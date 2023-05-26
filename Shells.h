@@ -18,8 +18,7 @@
 #define MAX_CMD_LEN 1024
 #define LIM 256
 #define LINEMAX 1024
-#define LSH_RL_BUFSIZE 1024
-#define TOK_DELIM " \t\r\n\a\""
+#define _DELIM " \t\r\n\a\""
 
 /*signal handlers*/
 void sig_child(int t);
@@ -30,7 +29,6 @@ int newProc(char **tp);
 static pid_t shellPGID;
 static pid_t shellPID;
 static int SH_INTERACTIVE;
-static struct termios MOD_SH;
 static char *currentDir;
 extern char **environ;
 struct sigaction childAction;
@@ -42,7 +40,7 @@ void shPpt(void);
 int dirSwitch(char *args[]);
 int envmgt(char *args[], int alt);
 void tunnels(char *args[]);
-char *lsh_readln(void);
+char *readln(void);
 void uninteractive(void);
 char *readstr(void);
 char **divline(char *ln);

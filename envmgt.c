@@ -18,7 +18,7 @@ int envmgt(char *args[], int alt)
 			printf("%s\n", *t);
 		}
 	}
-	else if (option == 1)
+	else if (alt == 1)
 	{
 		if (args[1] == NULL || args[2] == NULL)
 		{
@@ -42,7 +42,7 @@ int envmgt(char *args[], int alt)
 			setenv(args[1], args[2], 1);
 		}
 	}
-	else if (option == 2)
+	else if (alt == 2)
 	{
 		if (args[1] == NULL)
 		{
@@ -79,8 +79,7 @@ void filo(char *args[], char *inputFile, char *outputFile, int alt)
 {
 	int fd;
 
-	t = (pid = fork());
-	if (t == -1)
+	if ((pid = fork()) == -1)
 	{
 		printf("failed to create child process\n");
 		return;
